@@ -1,6 +1,6 @@
 var APP = (function() {
-	var _app = {};
-	_app.data = null;
+	var _app = {new:[], old:[]};
+	_app.data = {};
 	_app.debug = false;
 	_app.albumId = _param("albumId");
 	_app.pwd = _param("pwd");
@@ -101,7 +101,7 @@ var APP = (function() {
 					"old": []
 				};
 				var rec;
-				_app.data["new"] = data.Photos;
+				_app.data["new"] = data.Photos || [];
 				if (_app.data["new"].length == 0) {
 					rec = _viewURL + _app.data["old"][Math.floor(Math.random() * (_app.data["old"].length-1 - 0 + 1))];
 				}
@@ -111,7 +111,7 @@ var APP = (function() {
 					_app.data["old"].push(rec);
 				}
 
-				_app.events.publish("display photo", _viewURL + rec.VirtualResource);
+				// _app.events.publish("display photo", _viewURL + rec.VirtualResource);
 				//_app.events.publish("get next photo", _viewURL + rec.VirtualResource);
 			},
 			error: function() {
