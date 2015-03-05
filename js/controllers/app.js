@@ -121,9 +121,9 @@ var APP = (function() {
 		});
 	}
 
-	//window.setInterval(function() {
-	//	_app.events.publish("get next photo");
-	//}, 10000);
+	window.setInterval(function() {
+		_app.events.publish("get next photo");
+	}, 10000);
 
 	$("button").click(function() {
 		_app.events.publish("get next photo");
