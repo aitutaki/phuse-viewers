@@ -1,12 +1,12 @@
 var APP = (function() {
-	var _app = {new:[], old:[]};
-	_app.data = {};
+	var _app = {};
+	_app.data = {new:[], old:[]};
 	_app.debug = false;
 	_app.albumId = _param("albumId");
 	_app.pwd = _param("pwd");
 
-	var _url = "http://www.papmyday.com/api/Photos";
-	var _viewURL = "http://www.papmyday.com/";
+	var _url = "http://www.phuse-app.com/api/Photos";
+	var _viewURL = "http://www.phuse-app.com/";
 	var _lastPoll = null;
 	var _idx = 0;
 
@@ -121,9 +121,9 @@ var APP = (function() {
 		});
 	}
 
-	window.setInterval(function() {
-		_app.events.publish("get next photo");
-	}, 10000);
+	//window.setInterval(function() {
+	//	_app.events.publish("get next photo");
+	//}, 10000);
 
 	$("button").click(function() {
 		_app.events.publish("get next photo");
