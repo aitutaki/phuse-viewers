@@ -1,3 +1,14 @@
+body {
+  font-family: Arial;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-image: url(../photos/crest.jpg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+}
+
 .slide
 {
   display: block;
@@ -6,6 +17,49 @@
   left: 0px;
   width: 100%;
   height: 100%;
+  z-index: 8888;
   background-position: 50% 50%;
-  background-size: cover;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+#title {
+  display: none;
+  color: white;
+  text-shadow: 1px 1px 1px black;
+  font-size: 60px;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 9991;
+}
+
+.contibutors {
+  color: white;
+  font-size: 30px;
+  text-shadow: 1px 1px 1px black;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 9995;
+}
+
+#countdown {
+  color: white;
+  text-shadow: 1px 1px 1px black;
+  font-size: 60px;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9992;
+}
+
+.wifi {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  font-size: 30px;
+  color: white;
+  text-shadow: 1px 1px 1px black;
+  z-index: 9993;
 }

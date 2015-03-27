@@ -8,7 +8,7 @@
   		$div = $("<div class=\"slide\"></div>").appendTo("#container");
     }
     $div.fadeOut("slow", function() {
-  		$div.css("background-image", "url(" + img + ")");
+  		$div.css("background-image", "url(" + img + "?size=orig)");
       $div.fadeIn("slow");
     });
 	}
