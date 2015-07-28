@@ -158,6 +158,7 @@ var APP = (function() {
 
 	}
 
+	/*
 	window.setInterval(function() {
 		_app.events.publish("get next photo");
 	}, 20000);
@@ -175,7 +176,10 @@ var APP = (function() {
     _cnt = moment.utc(ms).format("HH:mm:ss");
 		_countdown.text(_cnt);
 	}, 1000);
+	*/
 
+	/*
+	_app.events.publish("refresh photos");
 	$("button").click(function() {
 		_app.events.publish("get next photo");
 	});
@@ -187,6 +191,7 @@ var APP = (function() {
 			_album = data[0];
 		}
 	});
+	*/
 
 	return _app;
 })();

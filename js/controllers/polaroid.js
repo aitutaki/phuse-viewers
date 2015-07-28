@@ -14,7 +14,7 @@
 
 		var $div = $("<div></div>");
 		$div.addClass("polaroid");
-		$div.css("background-image", "url(" + img + ")");
+		$div.css("background-image", "url(" + img + "?size=orig)");
 		$div.css("-webkit-transform", "rotate(" + angle + "deg)");
 		$div.css("left", left);
 		$div.css("top", top);

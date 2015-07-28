@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Photo App</title>
+		<link rel="Stylesheet" href="css/polaroid.css" />
+		<link rel="Stylesheet" href="css/slideshow.css" />
+		<script language="javascript" type="text/javascript" src="js/lib/jquery.js"></script>
+		<script language="javascript" type="text/javascript" src="js/lib/moment.js"></script>
+		<script type="text/javascript" src="js/lib/jquery.signalR-2.2.0.js"></script>
+    <script type="text/javascript" src="http://www.phuse-app.com/signalr/hubs"></script>
+<script>
+        $(function () {
+						function _param(name, def) {
+					    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+					    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+					        results = regex.exec(location.search);
+					    return results == null ? def : decodeURIComponent(results[1].replace(/\+/g, " "));
+						}
+
+            var phuse = $.connection.phuseHub;
+
+            //callbacks...
+            phuse.client.albumLogin = function (success) {
+                //alert("The result of logging into this album was: " + success);
+            };
+            phuse.client.albumBlocked = function () {
+                //alert("This album has been blocked which means we are in 'panic mode', so lets get the viewer offline!");
+            };
+            phuse.client.albumMediaAdded = function (mediaName) {
+                //alert("Display new image/video: " + mediaName);
+								var $div = $(".slide");
+						    if ($div.length == 0)
+						    {
+						  		$div = $("<div class=\"slide\"></div>").appendTo("#container");
+						    }
+						    $div.fadeOut("slow", function() {
+						  		$div.css("background-image", "url(" + mediaName + "?size=orig)");
+						      $div.fadeIn("slow");
+						    });
+            };
+            //...end of callbacks
+
+            $.connection.hub.start().done(function () {
+
+                //when the viewer page loads, we need to 'log in' to the album (these credentials will be verified server-side)
+                phuse.server.viewAlbum(_param("albumId"), _param("pwd"));
+
+            });
+
+            $("#btnAddAlbumMedia").click(function () {
+                //this method is here for demo only - this will called server-side when someone uploads a pic - this is here just to pretend someone has uploaded a pic
+                //phuse.server.addAlbumMedia($("#txtAlbumId").val(), "newimage.png");
+            });
+
+        });
+    </script>
+
+	</head>
+	<body>
+
+		<div id="container">
+			<!--
+			<div class="polaroid"></div>
+		-->
+		</div>
+	</body>
+</html>
